@@ -10,10 +10,14 @@ import org.apache.logging.log4j.Logger;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.AxeItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -80,7 +84,51 @@ public class Main {
 								.saturation(1.2f)
 								.build()
 							)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_sword"))			
+						).setRegistryName(new ResourceLocation(MODID, "cheese_sword")),
+				
+				//Cheese_Pickaxe
+				ItemList.cheese_pickaxe = new PickaxeItem(AdditionalItemTier.CHEESE, 7, 2.0F, new Item.Properties()
+						.group(ItemGroup.COMBAT)
+						.food(
+								new Food.Builder()
+								.hunger(6)
+								.saturation(1.2f)
+								.build()
+							)
+						).setRegistryName(new ResourceLocation(MODID, "cheese_pickaxe")),
+				
+				//Cheese_Shovel
+				ItemList.cheese_shovel = new ShovelItem(AdditionalItemTier.CHEESE, 7, 2.0F, new Item.Properties()
+						.group(ItemGroup.COMBAT)
+						.food(
+								new Food.Builder()
+								.hunger(6)
+								.saturation(1.2f)
+								.build()
+							)
+						).setRegistryName(new ResourceLocation(MODID, "cheese_shovel")),
+				
+				//Cheese_Axe
+				ItemList.cheese_axe = new AxeItem(AdditionalItemTier.CHEESE, 7, 2.0F, new Item.Properties()
+						.group(ItemGroup.COMBAT)
+						.food(
+								new Food.Builder()
+								.hunger(6)
+								.saturation(1.2f)
+								.build()
+							)
+						).setRegistryName(new ResourceLocation(MODID, "cheese_axe")),
+				
+				//Cheese_Hoe
+				ItemList.cheese_hoe = new HoeItem(AdditionalItemTier.CHEESE, 7, 2.0F, new Item.Properties()
+						.group(ItemGroup.COMBAT)
+						.food(
+								new Food.Builder()
+								.hunger(6)
+								.saturation(1.2f)
+								.build()
+							)
+						).setRegistryName(new ResourceLocation(MODID, "cheese_hoe"))
 			);
 		}
 		
