@@ -1,5 +1,9 @@
 package vali.glotyflotymod;
 
+import vali.glotyflotymod.enums.AdditionalItemTier;
+import vali.glotyflotymod.lists.BlockList;
+import vali.glotyflotymod.lists.ItemList;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,20 +23,14 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import vali.glotyflotymod.enums.AdditionalItemTier;
-import vali.glotyflotymod.lists.BlockList;
-import vali.glotyflotymod.lists.ItemList;
 
 @Mod("glotyflotymod")
 public class Main {
 	
-	public static Main instance;
-	public static final String MODID = "glotyflotymod";
-	
+	public static final String MODID = "glotyflotymod";	
 	private static final Logger LOGGER = LogManager.getLogger(MODID);
 	
 	public Main() {
-		instance = this;
 		
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientRegisteries);
