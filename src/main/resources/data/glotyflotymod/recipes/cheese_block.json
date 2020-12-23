@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern":
+    [
+        "xxx",
+        "xxx",
+        "xxx"
+    ],
+    "key":
+    {
+        "x":
+        {
+            "item": "glotyflotymod:cheese_item"
+        }
+    },
+    "result":
+    {
+        "item": "glotyflotymod:cheese_block",
+        "count": 1
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [
+        {
+            "item": "glotyflotymod:cheese_block"
+        }
+    ],
+    "result":
+    {
+        "item": "glotyflotymod:cheese_item",
+        "count": 9
+    }
+}
