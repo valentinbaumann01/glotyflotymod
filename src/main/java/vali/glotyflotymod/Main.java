@@ -1,5 +1,6 @@
 package vali.glotyflotymod;
 
+import vali.glotyflotymod.enums.AdditionalArmorMaterial;
 import vali.glotyflotymod.enums.AdditionalItemTier;
 import vali.glotyflotymod.lists.BlockList;
 import vali.glotyflotymod.lists.ItemList;
@@ -10,6 +11,8 @@ import org.apache.logging.log4j.Logger;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
+import net.minecraft.inventory.EquipmentSlotType;
+import net.minecraft.item.ArmorItem;
 import net.minecraft.item.AxeItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
@@ -128,7 +131,51 @@ public class Main {
 								.saturation(1.2f)
 								.build()
 							)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_hoe"))
+						).setRegistryName(new ResourceLocation(MODID, "cheese_hoe")),
+				
+				//Cheese_Helmet
+				ItemList.cheese_helmet = new ArmorItem(AdditionalArmorMaterial.CHEESE,EquipmentSlotType.HEAD, new Item.Properties()
+						.group(ItemGroup.COMBAT)
+						.food(								
+								new Food.Builder()
+								.hunger(6)
+								.saturation(1.2f)
+								.build()
+							)
+						).setRegistryName(new ResourceLocation(MODID, "cheese_helmet")),
+				
+				//Cheese_Chestplate
+				ItemList.cheese_chestplate = new ArmorItem(AdditionalArmorMaterial.CHEESE,EquipmentSlotType.CHEST, new Item.Properties()
+						.group(ItemGroup.COMBAT)
+						.food(								
+								new Food.Builder()
+								.hunger(6)
+								.saturation(1.2f)
+								.build()
+							)
+						).setRegistryName(new ResourceLocation(MODID, "cheese_chestplate")),
+				
+				//Cheese_Leggins
+				ItemList.cheese_leggings = new ArmorItem(AdditionalArmorMaterial.CHEESE,EquipmentSlotType.LEGS, new Item.Properties()
+						.group(ItemGroup.COMBAT)
+						.food(								
+								new Food.Builder()
+								.hunger(6)
+								.saturation(1.2f)
+								.build()
+							)
+						).setRegistryName(new ResourceLocation(MODID, "cheese_leggings")),
+				
+				//Cheese_boots
+				ItemList.cheese_boots = new ArmorItem(AdditionalArmorMaterial.CHEESE,EquipmentSlotType.FEET, new Item.Properties()
+						.group(ItemGroup.COMBAT)
+						.food(								
+								new Food.Builder()
+								.hunger(6)
+								.saturation(1.2f)
+								.build()
+							)
+						).setRegistryName(new ResourceLocation(MODID, "cheese_boots"))
 			);
 		}
 		

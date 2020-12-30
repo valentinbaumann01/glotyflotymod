@@ -1,12 +1,16 @@
 {
-  "item.glotyflotymod.cheese_item": "Feines Käsestück",
+  "item.glotyflotymod.cheese_item": "Feines Kaesestuek",
   
-  "item.glotyflotymod.cheese_sword": "Käseschwert",
-  "item.glotyflotymod.cheese_pickaxe": "Käsespitzhacke",
-  "item.glotyflotymod.cheese_shovel": "Käseschaufel",
-  "item.glotyflotymod.cheese_axe": "Käseaxt",
-  "item.glotyflotymod.cheese_hoe": "Käsehacke",
+  "item.glotyflotymod.cheese_sword": "Kaeseschwert",
+  "item.glotyflotymod.cheese_pickaxe": "Kasespitzhacke",
+  "item.glotyflotymod.cheese_shovel": "Kaeseschaufel",
+  "item.glotyflotymod.cheese_axe": "Kaeseaxt",
+  "item.glotyflotymod.cheese_hoe": "Kaesehacke",
+  "item.glotyflotymod.cheese_helmet": "Kaesehelm",
+  "item.glotyflotymod.cheese_chestplate": "Kaesebrustplatte",
+  "item.glotyflotymod.cheese_leggings": "Kaeseleggings",
+  "item.glotyflotymod.cheese_boots": "Kaeseschuhe",
   
   
-  "block.glotyflotymod.cheese_block": "Käse"
+  "block.glotyflotymod.cheese_block": "Kaese"
 }
