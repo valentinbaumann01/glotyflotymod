@@ -12,5 +12,7 @@
   "item.glotyflotymod.cheese_boots": "Kaeseschuhe",
   
   
-  "block.glotyflotymod.cheese_block": "Kaese"
+  "block.glotyflotymod.cheese_block": "Kaese",
+  "block.glotyflotymod.fondue":"Fondue",
+  "block.glotyflotymod.fondue_bucket":"Fondue Eimer"
 }

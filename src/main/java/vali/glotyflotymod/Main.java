@@ -1,6 +1,9 @@
 package vali.glotyflotymod;
 
 import vali.glotyflotymod.blocks.BlockCheese;
+import vali.glotyflotymod.fluids.FluidFondue;
+import vali.glotyflotymod.fluids.FluidFondue.Flowing;
+import vali.glotyflotymod.fluids.FluidFondue.Source;
 import vali.glotyflotymod.items.ArmorItemCheeseBoots;
 import vali.glotyflotymod.items.ArmorItemCheeseChestplate;
 import vali.glotyflotymod.items.ArmorItemCheeseHelmet;
@@ -13,14 +16,22 @@ import vali.glotyflotymod.items.PickaxeItemCheese;
 import vali.glotyflotymod.items.ShovelItemCheese;
 import vali.glotyflotymod.items.SwordItemCheese;
 import vali.glotyflotymod.lists.BlockList;
+import vali.glotyflotymod.lists.FluidList;
 import vali.glotyflotymod.lists.ItemList;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.CauldronBlock;
+import net.minecraft.block.FlowingFluidBlock;
+import net.minecraft.block.material.Material;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.item.BlockItem;
+import net.minecraft.item.BucketItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -62,26 +73,25 @@ public class Main {
 		public static void registerItems(final RegistryEvent.Register<Item> event) {
 			event.getRegistry().registerAll
 			(
-				ItemList.cheese_item = new ItemCheese(new ResourceLocation(MODID, "cheese_item")),
-				
+				ItemList.cheese_item = new ItemCheese(new ResourceLocation(MODID, "cheese_item")),			
 				ItemList.cheese_block = new BlockItemCheese(),
+				ItemList.fondue_cauldron = new BlockItem(BlockList.fondue_cauldron, new Item.Properties()
+						.group(ItemGroup.FOOD)
+						).setRegistryName(BlockList.fondue_cauldron.getRegistryName()),
+				ItemList.fondue_bucket = new BucketItem(()->FluidList.flowing_fondue,new Item.Properties()
+						.group(ItemGroup.FOOD)
+						.maxStackSize(1)
+						).setRegistryName(new ResourceLocation(MODID, "fondue_bucket")),
 				
-				ItemList.cheese_sword = new SwordItemCheese(new ResourceLocation(MODID, "cheese_sword")),
-				
-				ItemList.cheese_pickaxe = new PickaxeItemCheese(new ResourceLocation(MODID, "cheese_pickaxe")),
-				
-				ItemList.cheese_shovel = new ShovelItemCheese(new ResourceLocation(MODID, "cheese_shovel")),
-				
-				ItemList.cheese_axe = new AxeItemCheese(new ResourceLocation(MODID, "cheese_axe")),
-				
+				ItemList.cheese_sword = new SwordItemCheese(new ResourceLocation(MODID, "cheese_sword")),			
+				ItemList.cheese_pickaxe = new PickaxeItemCheese(new ResourceLocation(MODID, "cheese_pickaxe")),				
+				ItemList.cheese_shovel = new ShovelItemCheese(new ResourceLocation(MODID, "cheese_shovel")),				
+				ItemList.cheese_axe = new AxeItemCheese(new ResourceLocation(MODID, "cheese_axe")),				
 				ItemList.cheese_hoe = new HoeItemCheese(new ResourceLocation(MODID, "cheese_hoe")),
 				
-				ItemList.cheese_helmet = new ArmorItemCheeseHelmet(new ResourceLocation(MODID, "cheese_helmet")),
-				
-				ItemList.cheese_chestplate = new ArmorItemCheeseChestplate(new ResourceLocation(MODID, "cheese_chestplate")),
-				
-				ItemList.cheese_leggings = new ArmorItemCheeseLeggins(new ResourceLocation(MODID, "cheese_leggings")),
-				
+				ItemList.cheese_helmet = new ArmorItemCheeseHelmet(new ResourceLocation(MODID, "cheese_helmet")),				
+				ItemList.cheese_chestplate = new ArmorItemCheeseChestplate(new ResourceLocation(MODID, "cheese_chestplate")),				
+				ItemList.cheese_leggings = new ArmorItemCheeseLeggins(new ResourceLocation(MODID, "cheese_leggings")),				
 				ItemList.cheese_boots = new ArmorItemCheeseBoots(new ResourceLocation(MODID, "cheese_boots"))
 				);
 		}
@@ -90,7 +100,21 @@ public class Main {
 		public static void registerBlock(final RegistryEvent.Register<Block> event) {
 			event.getRegistry().registerAll
 			(
-				BlockList.cheese_block = new BlockCheese(new ResourceLocation(MODID, "cheese_block"))						
+				BlockList.cheese_block = new BlockCheese(new ResourceLocation(MODID, "cheese_block")),
+				BlockList.fondue = new FlowingFluidBlock(()-> FluidList.fondue, Block.Properties
+						.create(Material.WATER)
+						.doesNotBlockMovement()
+						.noDrops()).setRegistryName(new ResourceLocation(MODID, "fondue")),
+				BlockList.fondue_cauldron = new CauldronBlock(CauldronBlock.Properties
+						.create(Material.GOURD)).setRegistryName(new ResourceLocation(MODID, "fondue_cauldron"))
+			);
+		}
+		
+		@SubscribeEvent
+		public static void registerFluids(final RegistryEvent.Register<Fluid> event) {
+			event.getRegistry().registerAll(
+					FluidList.fondue = (Source) new FluidFondue.Source().setRegistryName(new ResourceLocation(MODID, "fondue")),
+					FluidList.flowing_fondue = (Flowing) new FluidFondue.Flowing().setRegistryName(new ResourceLocation(MODID, "flowing_fondue"))
 			);
 		}
 	}

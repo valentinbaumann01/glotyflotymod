@@ -3,23 +3,18 @@ package vali.glotyflotymod.lists;
 import net.minecraft.item.Item;
 
 public class ItemList {
-	//Items
+
 	public static Item cheese_item;
 	
-	/*Tools*/
-	public static Item cheese_sword;
-	public static Item cheese_pickaxe;
-	public static Item cheese_shovel;
-	public static Item cheese_axe;
-	public static Item cheese_hoe;
-	
-	/*Armor*/
-	public static Item cheese_helmet;
-	public static Item cheese_chestplate;
-	public static Item cheese_leggings;
-	public static Item cheese_boots;
-	
-	
-	//Block Items
 	public static Item cheese_block;
+	
+	public static Item fondue_cauldron;
+	
+	public static Item fondue_bucket;
+	
+	public static Item cheese_sword, cheese_pickaxe, cheese_shovel, cheese_axe, cheese_hoe;
+	
+	public static Item cheese_helmet, cheese_chestplate, cheese_leggings, cheese_boots;
+	
+
 }
