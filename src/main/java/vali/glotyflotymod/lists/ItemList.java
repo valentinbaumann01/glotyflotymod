@@ -6,11 +6,14 @@ public class ItemList {
 	//Items
 	public static Item cheese_item;
 	
+	/*Tools*/
 	public static Item cheese_sword;
 	public static Item cheese_pickaxe;
 	public static Item cheese_shovel;
 	public static Item cheese_axe;
 	public static Item cheese_hoe;
+	
+	/*Armor*/
 	public static Item cheese_helmet;
 	public static Item cheese_chestplate;
 	public static Item cheese_leggings;

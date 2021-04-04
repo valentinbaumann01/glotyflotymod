@@ -1,7 +1,17 @@
 package vali.glotyflotymod;
 
-import vali.glotyflotymod.enums.AdditionalArmorMaterial;
-import vali.glotyflotymod.enums.AdditionalItemTier;
+import vali.glotyflotymod.blocks.BlockCheese;
+import vali.glotyflotymod.items.ArmorItemCheeseBoots;
+import vali.glotyflotymod.items.ArmorItemCheeseChestplate;
+import vali.glotyflotymod.items.ArmorItemCheeseHelmet;
+import vali.glotyflotymod.items.ArmorItemCheeseLeggins;
+import vali.glotyflotymod.items.AxeItemCheese;
+import vali.glotyflotymod.items.BlockItemCheese;
+import vali.glotyflotymod.items.HoeItemCheese;
+import vali.glotyflotymod.items.ItemCheese;
+import vali.glotyflotymod.items.PickaxeItemCheese;
+import vali.glotyflotymod.items.ShovelItemCheese;
+import vali.glotyflotymod.items.SwordItemCheese;
 import vali.glotyflotymod.lists.BlockList;
 import vali.glotyflotymod.lists.ItemList;
 
@@ -9,19 +19,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.item.ArmorItem;
-import net.minecraft.item.AxeItem;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Food;
-import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.PickaxeItem;
-import net.minecraft.item.ShovelItem;
-import net.minecraft.item.SwordItem;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -36,6 +35,10 @@ public class Main {
 	
 	public static final String MODID = "glotyflotymod";	
 	private static final Logger LOGGER = LogManager.getLogger(MODID);
+	public static final Food foodBuilder = new Food.Builder()
+			.hunger(6)
+			.saturation(1.2f)
+			.build();
 	
 	public Main() {
 		
@@ -59,136 +62,35 @@ public class Main {
 		public static void registerItems(final RegistryEvent.Register<Item> event) {
 			event.getRegistry().registerAll
 			(
-				//Cheese_Item
-				ItemList.cheese_item = new Item(
-						new Item.Properties()
-							.group(ItemGroup.FOOD)
-							.food(
-									new Food.Builder()
-										.hunger(6)
-										.saturation(1.2f)
-										.build()
-									)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_item")),
+				ItemList.cheese_item = new ItemCheese(new ResourceLocation(MODID, "cheese_item")),
 				
-				//Cheese_Block
-				ItemList.cheese_block = new BlockItem(
-						BlockList.cheese_block, 
-						new Item.Properties()
-							.group(ItemGroup.DECORATIONS)
-						).setRegistryName(BlockList.cheese_block.getRegistryName()),
+				ItemList.cheese_block = new BlockItemCheese(),
 				
-				//Cheese_Sword
-				ItemList.cheese_sword = new SwordItem(AdditionalItemTier.CHEESE, 7, 2.0F, new Item.Properties()
-						.group(ItemGroup.COMBAT)
-						.food(
-								new Food.Builder()
-								.hunger(6)
-								.saturation(1.2f)
-								.build()
-							)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_sword")),
+				ItemList.cheese_sword = new SwordItemCheese(new ResourceLocation(MODID, "cheese_sword")),
 				
-				//Cheese_Pickaxe
-				ItemList.cheese_pickaxe = new PickaxeItem(AdditionalItemTier.CHEESE, 7, 2.0F, new Item.Properties()
-						.group(ItemGroup.COMBAT)
-						.food(
-								new Food.Builder()
-								.hunger(6)
-								.saturation(1.2f)
-								.build()
-							)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_pickaxe")),
+				ItemList.cheese_pickaxe = new PickaxeItemCheese(new ResourceLocation(MODID, "cheese_pickaxe")),
 				
-				//Cheese_Shovel
-				ItemList.cheese_shovel = new ShovelItem(AdditionalItemTier.CHEESE, 7, 2.0F, new Item.Properties()
-						.group(ItemGroup.COMBAT)
-						.food(
-								new Food.Builder()
-								.hunger(6)
-								.saturation(1.2f)
-								.build()
-							)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_shovel")),
+				ItemList.cheese_shovel = new ShovelItemCheese(new ResourceLocation(MODID, "cheese_shovel")),
 				
-				//Cheese_Axe
-				ItemList.cheese_axe = new AxeItem(AdditionalItemTier.CHEESE, 7, 2.0F, new Item.Properties()
-						.group(ItemGroup.COMBAT)
-						.food(
-								new Food.Builder()
-								.hunger(6)
-								.saturation(1.2f)
-								.build()
-							)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_axe")),
+				ItemList.cheese_axe = new AxeItemCheese(new ResourceLocation(MODID, "cheese_axe")),
 				
-				//Cheese_Hoe
-				ItemList.cheese_hoe = new HoeItem(AdditionalItemTier.CHEESE, 7, 2.0F, new Item.Properties()
-						.group(ItemGroup.COMBAT)
-						.food(
-								new Food.Builder()
-								.hunger(6)
-								.saturation(1.2f)
-								.build()
-							)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_hoe")),
+				ItemList.cheese_hoe = new HoeItemCheese(new ResourceLocation(MODID, "cheese_hoe")),
 				
-				//Cheese_Helmet
-				ItemList.cheese_helmet = new ArmorItem(AdditionalArmorMaterial.CHEESE,EquipmentSlotType.HEAD, new Item.Properties()
-						.group(ItemGroup.COMBAT)
-						.food(								
-								new Food.Builder()
-								.hunger(6)
-								.saturation(1.2f)
-								.build()
-							)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_helmet")),
+				ItemList.cheese_helmet = new ArmorItemCheeseHelmet(new ResourceLocation(MODID, "cheese_helmet")),
 				
-				//Cheese_Chestplate
-				ItemList.cheese_chestplate = new ArmorItem(AdditionalArmorMaterial.CHEESE,EquipmentSlotType.CHEST, new Item.Properties()
-						.group(ItemGroup.COMBAT)
-						.food(								
-								new Food.Builder()
-								.hunger(6)
-								.saturation(1.2f)
-								.build()
-							)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_chestplate")),
+				ItemList.cheese_chestplate = new ArmorItemCheeseChestplate(new ResourceLocation(MODID, "cheese_chestplate")),
 				
-				//Cheese_Leggins
-				ItemList.cheese_leggings = new ArmorItem(AdditionalArmorMaterial.CHEESE,EquipmentSlotType.LEGS, new Item.Properties()
-						.group(ItemGroup.COMBAT)
-						.food(								
-								new Food.Builder()
-								.hunger(6)
-								.saturation(1.2f)
-								.build()
-							)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_leggings")),
+				ItemList.cheese_leggings = new ArmorItemCheeseLeggins(new ResourceLocation(MODID, "cheese_leggings")),
 				
-				//Cheese_boots
-				ItemList.cheese_boots = new ArmorItem(AdditionalArmorMaterial.CHEESE,EquipmentSlotType.FEET, new Item.Properties()
-						.group(ItemGroup.COMBAT)
-						.food(								
-								new Food.Builder()
-								.hunger(6)
-								.saturation(1.2f)
-								.build()
-							)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_boots"))
-			);
+				ItemList.cheese_boots = new ArmorItemCheeseBoots(new ResourceLocation(MODID, "cheese_boots"))
+				);
 		}
 		
 		@SubscribeEvent
 		public static void registerBlock(final RegistryEvent.Register<Block> event) {
 			event.getRegistry().registerAll
 			(
-				//Cheese_Block
-				BlockList.cheese_block = new Block(
-						Block.Properties.create(Material.GOURD)
-							.hardnessAndResistance(2.0f,3.0f)
-							.sound(SoundType.GROUND)
-						).setRegistryName(new ResourceLocation(MODID, "cheese_block"))						
+				BlockList.cheese_block = new BlockCheese(new ResourceLocation(MODID, "cheese_block"))						
 			);
 		}
 	}
