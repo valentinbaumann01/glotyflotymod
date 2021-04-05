@@ -1,6 +1,8 @@
 package vali.glotyflotymod;
 
 import vali.glotyflotymod.blocks.BlockCheese;
+import vali.glotyflotymod.blocks.CauldronBlockFondue;
+import vali.glotyflotymod.blocks.FlowingFluidBlockFondue;
 import vali.glotyflotymod.fluids.FluidFondue;
 import vali.glotyflotymod.fluids.FluidFondue.Flowing;
 import vali.glotyflotymod.fluids.FluidFondue.Source;
@@ -9,7 +11,9 @@ import vali.glotyflotymod.items.ArmorItemCheeseChestplate;
 import vali.glotyflotymod.items.ArmorItemCheeseHelmet;
 import vali.glotyflotymod.items.ArmorItemCheeseLeggins;
 import vali.glotyflotymod.items.AxeItemCheese;
+import vali.glotyflotymod.items.BlockItemCauldron;
 import vali.glotyflotymod.items.BlockItemCheese;
+import vali.glotyflotymod.items.BucketItemFondue;
 import vali.glotyflotymod.items.HoeItemCheese;
 import vali.glotyflotymod.items.ItemCheese;
 import vali.glotyflotymod.items.PickaxeItemCheese;
@@ -23,15 +27,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.CauldronBlock;
-import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.block.material.Material;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.BucketItem;
 import net.minecraft.item.Food;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -75,13 +73,8 @@ public class Main {
 			(
 				ItemList.cheese_item = new ItemCheese(new ResourceLocation(MODID, "cheese_item")),			
 				ItemList.cheese_block = new BlockItemCheese(),
-				ItemList.fondue_cauldron = new BlockItem(BlockList.fondue_cauldron, new Item.Properties()
-						.group(ItemGroup.FOOD)
-						).setRegistryName(BlockList.fondue_cauldron.getRegistryName()),
-				ItemList.fondue_bucket = new BucketItem(()->FluidList.flowing_fondue,new Item.Properties()
-						.group(ItemGroup.FOOD)
-						.maxStackSize(1)
-						).setRegistryName(new ResourceLocation(MODID, "fondue_bucket")),
+				ItemList.fondue_cauldron = new BlockItemCauldron(BlockList.fondue_cauldron.getRegistryName()),
+				ItemList.fondue_bucket = new BucketItemFondue(new ResourceLocation(MODID, "fondue_bucket")),
 				
 				ItemList.cheese_sword = new SwordItemCheese(new ResourceLocation(MODID, "cheese_sword")),			
 				ItemList.cheese_pickaxe = new PickaxeItemCheese(new ResourceLocation(MODID, "cheese_pickaxe")),				
@@ -101,12 +94,8 @@ public class Main {
 			event.getRegistry().registerAll
 			(
 				BlockList.cheese_block = new BlockCheese(new ResourceLocation(MODID, "cheese_block")),
-				BlockList.fondue = new FlowingFluidBlock(()-> FluidList.fondue, Block.Properties
-						.create(Material.WATER)
-						.doesNotBlockMovement()
-						.noDrops()).setRegistryName(new ResourceLocation(MODID, "fondue")),
-				BlockList.fondue_cauldron = new CauldronBlock(CauldronBlock.Properties
-						.create(Material.GOURD)).setRegistryName(new ResourceLocation(MODID, "fondue_cauldron"))
+				BlockList.fondue = new FlowingFluidBlockFondue(new ResourceLocation(MODID, "fondue")),
+				BlockList.fondue_cauldron = new CauldronBlockFondue(new ResourceLocation(MODID, "fondue_cauldron"))
 			);
 		}
 		
